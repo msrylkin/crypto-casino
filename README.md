@@ -1,13 +1,9 @@
-# Sample Hardhat Project
+# Crypto casiono
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+Gambling game written on solidity. All players must place a bet in ETH, then the owner starts the game. The more a player bets, the higher chance he has to win. (using weighted random)
 
-Try running some of the following tasks:
+Run tests:
 
 ```shell
-npx hardhat help
 npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
 ```
