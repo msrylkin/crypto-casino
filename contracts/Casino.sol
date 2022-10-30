@@ -73,12 +73,13 @@ contract Casino {
         uint256 normalizedRandomNumber = randomWord % 100;
 
         for (uint256 i = 0; i < currentPlayerKeyHashes.length; i++) {
-            uint256 weight = max((players[currentPlayerKeyHashes[i]].amount * 100) / totalSum, 1);
+            bytes32 playerKeyHash = currentPlayerKeyHashes[i];
+            uint256 weight = max((players[playerKeyHash].amount * 100) / totalSum, 1);
 
             if (normalizedRandomNumber <= weight) {
                 delete currentPlayerKeyHashes;
-                payable(players[currentPlayerKeyHashes[i]].playerId).transfer(address(this).balance);
-                winners[currentGameNumber] = players[currentPlayerKeyHashes[i]].playerId;
+                payable(players[playerKeyHash].playerId).transfer(address(this).balance);
+                winners[currentGameNumber] = players[playerKeyHash].playerId;
                 currentGameNumber++;
                 return;
             }
