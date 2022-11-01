@@ -79,6 +79,7 @@ contract Casino {
             if (normalizedRandomNumber <= weight) {
                 delete currentPlayerKeyHashes;
                 payable(players[playerKeyHash].playerId).transfer(address(this).balance);
+                rollInProgress = false;
                 winners[currentGameNumber] = players[playerKeyHash].playerId;
                 currentGameNumber++;
                 return;
